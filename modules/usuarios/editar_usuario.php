@@ -1,6 +1,7 @@
 <?php
-include_once "encabezado.php";
-include_once "navbar.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
+include_once "../../include/funciones.php";
 session_start();
 
 if(empty($_SESSION['usuario'])) header("location: login.php");
@@ -10,7 +11,7 @@ if (!$id) {
     echo 'No se ha seleccionado el usuario';
     exit;
 }
-include_once "funciones.php";
+include_once "../../include/funciones.php";
 $usuario = obtenerUsuarioPorId($id);
 ?>
 <div class="container">
@@ -61,7 +62,7 @@ if(isset($_POST['registrar'])){
         return;
     } 
     
-    include_once "funciones.php";
+    include_once "../../include/funciones.php";
     $resultado = editarUsuario($usuario, $nombre, $telefono, $direccion, $id);
     if($resultado){
         echo'
@@ -71,4 +72,5 @@ if(isset($_POST['registrar'])){
     }
     
 }
+include_once "../../include/footer.php";
 ?>

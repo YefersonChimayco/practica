@@ -1,7 +1,8 @@
 <?php
-include_once "encabezado.php";
-include_once "navbar.php";
-include_once "funciones.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
+include_once "../../include/funciones.php";
+
 session_start();
 
 if(empty($_SESSION['usuario'])) header("location: login.php");
@@ -16,6 +17,8 @@ $cartas = [
     ["titulo" => "Ganancia", "icono" => "fa fa-wallet", "total" => "$". calcularGananciaProductos(), "color" => "#D55929"],
 ];
 ?>
+
+
 <div class="container mt-3">
     <h1>
         <a class="btn btn-success btn-lg" href="agregar_producto.php">
@@ -24,7 +27,7 @@ $cartas = [
         </a>
         Productos
     </h1>
-    <?php include_once "cartas_totales.php"; ?>
+    <?php include_once "../ventas/cartas_totales.php"; ?>
 
     <form action="" method="post" class="input-group mb-3 mt-3">
         <input autofocus name="nombreProducto" type="text" class="form-control" placeholder="Escribe el nombre o código del producto que deseas buscar" aria-label="Nombre producto" aria-describedby="button-addon2">
@@ -74,3 +77,6 @@ $cartas = [
         </tbody>
     </table>
 </div>
+<?php 
+include_once "../../include/footer.php";
+?>

@@ -1,6 +1,6 @@
 <?php
-include_once "encabezado.php";
-include_once "navbar.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
 session_start();
 
 if(empty($_SESSION['usuario'])) header("location: login.php");
@@ -62,7 +62,7 @@ if(isset($_POST['registrar'])){
         return;
     } 
     
-    include_once "funciones.php";
+    include_once "../../include/funciones.php";
     $resultado = registrarProducto($codigo, $nombre, $compra, $venta, $existencia);
     if($resultado){
         echo'

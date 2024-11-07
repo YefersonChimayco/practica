@@ -1,6 +1,7 @@
 <?php
-include_once "encabezado.php";
-include_once "navbar.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
+include_once "../../include/funciones.php";
 session_start();
 
 if(empty($_SESSION['usuario'])) header("location: login.php");
@@ -11,7 +12,7 @@ if(empty($_SESSION['usuario'])) header("location: login.php");
     <form method="post">
         <div class="mb-3">
             <label for="usuario" class="form-label">Nombre de usuario</label>
-            <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Escribe el nombre de usuario. Ej. Paco">
+            <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Escribe el nombre de usuario">
         </div>
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre completo</label>
@@ -19,11 +20,11 @@ if(empty($_SESSION['usuario'])) header("location: login.php");
         </div>
         <div class="mb-3">
             <label for="telefono" class="form-label">Teléfono</label>
-            <input type="text" name="telefono" class="form-control" id="telefono" placeholder="Ej. 2111568974">
+            <input type="text" name="telefono" class="form-control" id="telefono" placeholder="Escribe el telefono">
         </div>
         <div class="mb-3">
             <label for="direccion" class="form-label">Dirección</label>
-            <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Ej. Av Collar 1005 Col Las Cruces">
+            <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Ecribe la direccion">
         </div>
 
         <div class="text-center mt-3">
@@ -33,6 +34,10 @@ if(empty($_SESSION['usuario'])) header("location: login.php");
             <a href="usuarios.php" class="btn btn-danger btn-lg">
                 <i class="fa fa-times"></i> 
                 Cancelar
+            </a>
+            <a href="usuarios.php" class="btn btn-dark btn-lg">
+                
+                ver Usuarios
             </a>
         </div>
     </form>
@@ -54,7 +59,7 @@ if(isset($_POST['registrar'])){
         return;
     } 
     
-    include_once "funciones.php";
+    include_once "../../include/funciones.php";
     $resultado = registrarUsuario($usuario, $nombre, $telefono, $direccion);
     if($resultado){
         echo'
@@ -64,4 +69,7 @@ if(isset($_POST['registrar'])){
     }
     
 }
+ 
+include_once "../../include/footer.php";
+
 ?>

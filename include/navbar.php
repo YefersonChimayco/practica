@@ -1,59 +1,52 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-2 shadow   rounded">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secundary mb-2  ">
   <div class="container-fluid">
+    <!-- Logotipo (opcional) y botón de menú en dispositivos móviles -->
     <a class="navbar-brand" href="#">
-      <img src="logo.png" alt="" width="150" height="40" class="d-inline-block align-text-top">
+      <img src="../../img/logotipo.png" alt="Logotipo" width="150" height="75" class="d-inline-block align-text-top">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <!-- Contenedor colapsable con la lista centrada -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <!-- Menú de navegación centrado -->
+      <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link active "  href="index.php">
-            <i class="fa fa-home"></i>
-            Inicio
-            </a>
+          <a class="nav-link active" href="../../index.php">
+            <i class="fa fa-house-user"></i> Inicio
+          </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="./modules/productos/productos.php">
-                <i class="fa fa-shopping-cart"></i>  
-                Productos
-            </a>
+          <a class="nav-link active" href="../../modules/productos/productos.php">
+            <i class="fa fa-box-open"></i> Productos
+          </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="./modules/usuarios/usuarios.php">
-            <i class="fa fa-users"></i> 
-            Usuarios
-            </a>
+          <a class="nav-link active" href="../../modules/usuarios/usuarios.php">
+            <i class="fa fa-user-tie"></i> Usuarios
+          </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="./modules/clientes/clientes.php">
-            <i class="fa fa-user-friends"></i> 
-            Clientes
-            </a>
+          <a class="nav-link active" href="../../modules/clientes/clientes.php">
+            <i class="fa fa-address-book"></i> Clientes
+          </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="./vender.php">
-            <i class="fa fa-cash-register"></i>   
-            Vender
-            </a>
+          <a class="nav-link active" href="../../vender.php">
+            <i class="fa fa-hand-holding-usd"></i> Vender
+          </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="ventas/reporte_ventas.php">
-            <i class="fa fa-file-alt"></i> 
-            Reporte ventas
-            </a>
+          <a class="nav-link active" href="../../modules/ventas/reporte_ventas.php">
+            <i class="fa fa-chart-line"></i> Reporte ventas
+          </a>
         </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href="perfil.php" class="btn btn-info" >Perfil</a>
-            </li>
-            &nbsp
-            <li class="nav-item">
-                <a href="./auth/cerrar_sesion.php" class="btn btn-warning">Salir</a>
-            </li>
-        </ul>
+      </ul>
+
+      <!-- Botones de perfil y salir alineados a la derecha -->
+      
     </div>
   </div>
 </nav>
+</body>

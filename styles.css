@@ -1,0 +1,76 @@
+/* ESTILOS DEL FOOTER*/
+
+.footer {
+    background: url('img/footer.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    position: relative;
+    z-index: 1;
+    margin-top: 100px;
+}
+.footer-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+.footer h5, .footer p, .footer a {
+    color: white;
+}
+.social-icons a {
+    font-size: 1.5rem;
+    color: white;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+.social-icons a:hover {
+    color: #ffdd57;
+}
+/* ESTILOS DEL NAVBAR */
+.navbar-nav .nav-link {
+    color: black !important;
+    font-size: 22px;
+  }
+  
+.navbar-custom{
+    height: 30px;
+}
+/* Efecto de agrandar iconos al pasar el cursor */
+.nav-link i {
+    transition: transform 0.3s ease;
+    color: #d86303;
+  }
+  
+.collapse{
+    border-bottom: 1px solid black;
+}
+  .nav-link:hover i {
+    transform: scale(1.5); /* Aumenta el tamaño del icono */
+    
+  }
+
+  /* Efecto de agrandar iconos en los botones de perfil y salir */
+  .btn i {
+    transition: transform 0.3s ease;
+    
+  }
+
+  .btn:hover i {
+    transform: scale(1.5); /* Aumenta el tamaño del icono en los botones */
+
+  }
+  /* estilos de la sesion*/
+  .alert{
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+  }
+
+  

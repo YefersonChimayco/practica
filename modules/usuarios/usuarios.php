@@ -2,6 +2,7 @@
 include_once "../../include/encabezado.php";
 include_once "../../include/navbar.php";
 include_once "../../include/funciones.php";
+
 session_start();
 if(empty($_SESSION['idUsuario'])) header("location: login.php");
 
@@ -52,3 +53,6 @@ $usuarios = obtenerUsuarios();
         </tbody>
     </table>
 </div>
+<?php 
+include_once "../../include/footer.php";
+?>

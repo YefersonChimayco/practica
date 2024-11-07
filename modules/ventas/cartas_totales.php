@@ -1,5 +1,5 @@
 <?php
-include_once "./include/encabezado.php";
+include_once "../../include/encabezado.php";
 ?>
 
 

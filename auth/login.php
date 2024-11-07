@@ -1,5 +1,5 @@
 <?php
-include_once "include/encabezado.php";
+include_once "../include/encabezado.php";
 ?>
 <div class="container">
     <div class="row m-5  no-gutters shadow-lg justify-content-center">

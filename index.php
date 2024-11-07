@@ -2,7 +2,7 @@
 include_once "include/funciones.php";
 
 session_start();
-if(empty($_SESSION['usuario'])) header("location: login.php");
+if(empty($_SESSION['usuario'])) header("location: auth/login.php");
 $cartas = [
     ["titulo" => "Total ventas", "icono" => "fa fa-money-bill", "total" => "$".obtenerTotalVentas(), "color" => "#A71D45"],
     ["titulo" => "Ventas hoy", "icono" => "fa fa-calendar-day", "total" => "$".obtenerTotalVentasHoy(), "color" => "#2A8D22"],

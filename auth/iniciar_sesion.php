@@ -1,5 +1,5 @@
 <?php
-include_once "include/encabezado.php";
+include_once "../include/encabezado.php";
 
 if(isset($_POST['ingresar'])){
     if(empty($_POST['usuario']) || empty($_POST['password'])){
@@ -11,7 +11,7 @@ if(isset($_POST['ingresar'])){
         return;
     }
 
-    include_once "include/funciones.php";
+    include_once "../include/funciones.php";
 
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
@@ -31,6 +31,6 @@ if(isset($_POST['ingresar'])){
 
     $_SESSION['usuario'] = $datosSesion->usuario;
     $_SESSION['idUsuario'] = $datosSesion->id;
-    header("location: index.php");
+    header("location: ../index.php");
 }
 ?>

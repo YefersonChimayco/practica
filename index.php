@@ -128,7 +128,7 @@ $productosMasVendidos = obtenerProductosMasVendidos();
 		<?php }?>
 	</div>
 
-	 <?php include_once "ventas/cartas_totales.php"?>
+	 <?php include_once "modules/ventas/cartas_totales.php"?>
 
 	 <div class="row mt-2">
 	 	<div class="col">

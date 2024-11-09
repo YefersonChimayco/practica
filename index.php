@@ -10,10 +10,10 @@ $cartas = [
 ];
 
 $totales = [
-	["nombre" => "Total productos", "total" => obtenerNumeroProductos(), "imagen" => "img/productos.png"],
-	["nombre" => "Ventas registradas", "total" => obtenerNumeroVentas(), "imagen" => "img/ventas.png"],
-	["nombre" => "Usuarios registrados", "total" => obtenerNumeroUsuarios(), "imagen" => "img/usuarios.png"],
-	["nombre" => "Clientes registrados", "total" => obtenerNumeroClientes(), "imagen" => "img/clientes.png"],
+	["nombre" => "Total productos", "total" => obtenerNumeroProductos(), "imagen" => "img/producosss.jpg"],
+	["nombre" => "Ventas registradas", "total" => obtenerNumeroVentas(), "imagen" => "img/ventasss.png"],
+	["nombre" => "Usuarios registrados", "total" => obtenerNumeroUsuarios(), "imagen" => "img/usuariosss.png"],
+	["nombre" => "Clientes registrados", "total" => obtenerNumeroClientes(), "imagen" => "img/clientesss.jpg"],
 ];
 
 $ventasUsuarios = obtenerVentasPorUsuario();
@@ -42,11 +42,11 @@ $productosMasVendidos = obtenerProductosMasVendidos();
   <div class="container-fluid">
     <!-- Botones de perfil y salir alineados a la derecha -->
     <div class="d-flex ms-auto">
-      <a href="perfil.php" class="btn btn-primary me-2">
-        <i class="fa fa-user-circle"></i> Perfil
+      <a href="modules/usuarios/perfil.php" class="btn btn-primary me-2">
+        <i class="fa fa-user-circle"></i> Perfil de vendedor
       </a>
       <a href="./auth/cerrar_sesion.php" class="btn btn-danger">
-        <i class="fa fa-sign-out-alt"></i> Salir
+        <i class="fa fa-sign-out-alt"></i> Cerrar Sesión
       </a>
     </div>
   </div>
@@ -86,12 +86,12 @@ $productosMasVendidos = obtenerProductosMasVendidos();
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./vender.php">
+          <a class="nav-link active" href="modules/ventas/vender.php">
             <i class="fa fa-hand-holding-usd"></i> Vender
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="ventas/reporte_ventas.php">
+          <a class="nav-link active" href="modules/ventas/reporte_ventas.php">
             <i class="fa fa-chart-line"></i> Reporte ventas
           </a>
         </li>

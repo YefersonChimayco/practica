@@ -1,6 +1,6 @@
 <?php
-include_once "encabezado.php";
-include_once "navbar.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
 session_start();
 
 if(empty($_SESSION['usuario'])) header("location: login.php");
@@ -10,7 +10,7 @@ if (!$id) {
     echo 'No se ha seleccionado el producto';
     exit;
 }
-include_once "funciones.php";
+include_once "../../include/funciones.php";
 $producto = obtenerProductoPorId($id);
 ?>
 
@@ -41,13 +41,18 @@ $producto = obtenerProductoPorId($id);
             
         </div>
         <div class="text-center mt-3">
-            <input type="submit" name="registrar" value="Registrar" class="btn btn-primary btn-lg">
+            <input type="submit" name="registrar" value="Registrar" class="btn btn-primary btn-lg" onclick="window.location.href='productos.php'">
             
             </input>
             <a href="productos.php" class="btn btn-danger btn-lg">
                 <i class="fa fa-times"></i> 
                 Cancelar
             </a>
+            <a href="productos.php" class="btn btn-success btn-lg">
+                <i class="fa fa-sign-out-alt"></i> 
+                volver 
+            </a>
+            
         </div>
     </form>
 </div>
@@ -70,14 +75,15 @@ if(isset($_POST['registrar'])){
         return;
     } 
     
-    include_once "funciones.php";
+    include_once "../../include/funciones.php";
     $resultado = editarProducto($codigo, $nombre, $compra, $venta, $existencia, $id);
     if($resultado){
         echo'
         <div class="alert alert-success mt-3" role="alert">
             Información del producto registrada con éxito.
         </div>';
+        
     }
-    
+
 }
 ?>

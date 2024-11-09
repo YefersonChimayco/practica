@@ -1,9 +1,9 @@
 <?php
-include_once "encabezado.php";
-include_once "navbar.php";
-include_once "funciones.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
+include_once "../../include/funciones.php";
 session_start();
-if(empty($_SESSION['usuario'])) header("location: login.php");
+if(empty($_SESSION['usuario'])) header("location: ../../auth/login.php");
 $_SESSION['lista'] = (isset( $_SESSION['lista'])) ?  $_SESSION['lista'] : [];
 $total = calcularTotalLista($_SESSION['lista']);
 $clientes = obtenerClientes();

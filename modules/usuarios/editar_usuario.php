@@ -42,6 +42,10 @@ $usuario = obtenerUsuarioPorId($id);
                 <i class="fa fa-times"></i> 
                 Cancelar
             </a>
+            <a href="usuarios.php" class="btn btn-success btn-lg">
+                <i class="fa fa-sign-out-alt"></i> 
+                volver 
+            </a>
         </div>
     </form>
 </div>

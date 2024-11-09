@@ -1,6 +1,6 @@
 <?php
-include_once "encabezado.php";
-include_once "navbar.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
 session_start();
 
 if(empty($_SESSION['usuario'])) header("location: login.php");
@@ -30,6 +30,10 @@ if(empty($_SESSION['usuario'])) header("location: login.php");
                 <i class="fa fa-times"></i> 
                 Cancelar
             </a>
+            <a href="clientes.php" class="btn btn-success btn-lg">
+                <i class="fa fa-sign-out-alt"></i> 
+                volver 
+            </a>
         </div>
     </form>
 </div>
@@ -48,7 +52,7 @@ if(isset($_POST['registrar'])){
         return;
     } 
     
-    include_once "funciones.php";
+    include_once "../../include/funciones.php";
     $resultado = registrarCliente($nombre, $telefono, $direccion);
     if($resultado){
         echo'

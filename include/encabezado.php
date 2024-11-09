@@ -19,11 +19,11 @@
   <div class="container-fluid">
     <!-- Botones de perfil y salir alineados a la derecha -->
     <div class="d-flex ms-auto">
-      <a href="perfil.php" class="btn btn-primary me-2">
-        <i class="fa fa-user-circle"></i> Perfil
+      <a href="../../modules/usuarios/perfil.php" class="btn btn-primary me-2">
+        <i class="fa fa-user-circle"></i> Perfil de vendedor
       </a>
-      <a href="./auth/cerrar_sesion.php" class="btn btn-danger">
-        <i class="fa fa-sign-out-alt"></i> Salir
+      <a href="../../auth/cerrar_sesion.php" class="btn btn-danger">
+        <i class="fa fa-sign-out-alt"></i> cerrar sesión
       </a>
     </div>
   </div>

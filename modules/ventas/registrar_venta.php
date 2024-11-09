@@ -1,5 +1,5 @@
 <?php
-include_once "funciones.php";
+include_once "../../include/funciones.php";
 
 
 session_start();
@@ -9,7 +9,7 @@ $total = calcularTotalLista($productos);
 $idCliente = $_SESSION['clienteVenta'];
 
 if(count($productos) === 0) {
-    header("location: vender.php");
+    header("location: modules/ventas/vender.php");
     return;
 };
 $resultado = registrarVenta($productos, $idUsuario, $idCliente, $total);

@@ -2,9 +2,9 @@
 
 session_start();
 if(empty($_SESSION['usuario'])) header("location: login.php");
-include_once "encabezado.php";
-include_once "navbar.php";
-include_once "funciones.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
+include_once "../../include/funciones.php";
 $nombreUsuario = $_SESSION['usuario'];
 $idUsuario = $_SESSION['idUsuario'];
 
@@ -23,9 +23,9 @@ $cartas = [
 		</h1>
 	</div>
 	
-	<?php include_once "cartas_totales.php"?>
+	<?php include_once "../../modules/ventas/cartas_totales.php"?>
 	<div class="text-center mt-3">
-		<a href="cambiar_password.php" class="btn btn-lg btn-primary">
+		<a href="../../auth/cambiar_password.php" class="btn btn-lg btn-primary">
 			<i class="fa fa-key"></i>
 			Cambiar contraseña
 		</a>

@@ -1,6 +1,6 @@
 <?php
-include_once "encabezado.php";
-include_once "navbar.php";
+include_once "../../include/encabezado.php";
+include_once "../../include/navbar.php";
 session_start();
 
 if(empty($_SESSION['usuario'])) header("location: login.php");
@@ -10,7 +10,7 @@ if (!$id) {
     echo 'No se ha seleccionado el cliente';
     exit;
 }
-include_once "funciones.php";
+include_once "../../include/funciones.php";
 $cliente = obtenerClientePorId($id);
 ?>
 
@@ -38,6 +38,10 @@ $cliente = obtenerClientePorId($id);
                 <i class="fa fa-times"></i> 
                 Cancelar
             </a>
+            <a href="clientes.php" class="btn btn-success btn-lg">
+                <i class="fa fa-sign-out-alt"></i> 
+                volver 
+            </a>
         </div>
     </form>
 </div>
@@ -56,7 +60,7 @@ if(isset($_POST['registrar'])){
         return;
     } 
     
-    include_once "funciones.php";
+    include_once "../../include/funciones.php";
     $resultado = editarCliente($nombre, $telefono, $direccion, $id);
     if($resultado){
         echo'

@@ -33,7 +33,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="../../vender.php">
+          <a class="nav-link active" href="../../modules/ventas/vender.php">
             <i class="fa fa-hand-holding-usd"></i> Vender
           </a>
         </li>

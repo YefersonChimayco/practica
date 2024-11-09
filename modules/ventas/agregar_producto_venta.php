@@ -1,5 +1,5 @@
 <?php   
-    include_once "funciones.php";
+    include_once "../../include/funciones.php";
     session_start();
     if(isset($_POST['agregar'])){
     

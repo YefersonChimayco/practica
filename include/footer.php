@@ -6,7 +6,7 @@
             <div class="col-md-4 mb-4">
                 <h5 class="text-uppercase fw-bold">Inventario ARIEL</h5>
                 <p>Simplifica la gestión de tu inventario con nuestra plataforma innovadora y eficiente.</p>
-                <img src="./img/logotipo.png" alt="InventarioPro Logo" class="img-fluid">
+                <img src="../../img/logotipo.png" alt="InventarioPro Logo" class="img-fluid">
             </div>
             <!-- Enlaces útiles -->
             <div class="col-md-4 mb-4">

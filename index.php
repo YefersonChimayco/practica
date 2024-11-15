@@ -3,17 +3,17 @@ include_once "include/funciones.php";
 session_start();
 if(empty($_SESSION['usuario'])) header("location:auth/login.php");
 $cartas = [
-    ["titulo" => "Total ventas", "icono" => "fa fa-money-bill", "total" => "$".obtenerTotalVentas(), "color" => "#A71D45"],
-    ["titulo" => "Ventas hoy", "icono" => "fa fa-calendar-day", "total" => "$".obtenerTotalVentasHoy(), "color" => "#2A8D22"],
-    ["titulo" => "Ventas semana", "icono" => "fa fa-calendar-week", "total" => "$".obtenerTotalVentasSemana(), "color" => "#223D8D"],
-    ["titulo" => "Ventas mes", "icono" => "fa fa-calendar-alt", "total" => "$".obtenerTotalVentasMes(), "color" => "#D55929"],
+    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas</a>","Total ventas", "icono" => "fa fa-money-bill", "total" => "$".obtenerTotalVentas(), "color" => "#A71D45"],
+    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas Hoy</a>","Ventas hoy", "icono" => "fa fa-calendar-day", "total" => "$".obtenerTotalVentasHoy(), "color" => "#2A8D22"],
+    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas en la Semana</a>","Ventas semana", "icono" => "fa fa-calendar-week", "total" => "$".obtenerTotalVentasSemana(), "color" => "#223D8D"],
+    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas de este Mes</a>","Ventas mes", "icono" => "fa fa-calendar-alt", "total" => "$".obtenerTotalVentasMes(), "color" => "#D55929"],
 ];
 
 $totales = [
-	["nombre" => "Total productos", "total" => obtenerNumeroProductos(), "imagen" => "img/producosss.jpg"],
-	["nombre" => "Ventas registradas", "total" => obtenerNumeroVentas(), "imagen" => "img/ventasss.png"],
-	["nombre" => "Usuarios registrados", "total" => obtenerNumeroUsuarios(), "imagen" => "img/usuariosss.png"],
-	["nombre" => "Clientes registrados", "total" => obtenerNumeroClientes(), "imagen" => "img/clientesss.jpg"],
+	["nombre" => "<a href='modules/productos/productos.php'>Total productos</a>","Total productos", "total" => obtenerNumeroProductos(), "imagen" => "img/producosss.jpg"],
+	["nombre" => "<a href='modules/ventas/reporte_ventas.php'>Ventas registradas</a>","Ventas registradas", "total" => obtenerNumeroVentas(), "imagen" => "img/ventasss.png"],
+	["nombre" => "<a href='modules/usuarios/usuarios.php'>Usuarios Registrados</a>","Usuarios registrados", "total" => obtenerNumeroUsuarios(), "imagen" => "img/usuariosss.png"],
+	["nombre" => "<a href='modules/clientes/clientes.php'>Clientes registrados</a>","Clientes registrados", "total" => obtenerNumeroClientes(), "imagen" => "img/clientesss.jpg"],
 ];
 
 $ventasUsuarios = obtenerVentasPorUsuario();
@@ -127,34 +127,25 @@ $productosMasVendidos = obtenerProductosMasVendidos();
 		<?php }?>
 	</div>
 
-	 <?php include_once "modules/ventas/cartas_totales.php"?>
-
-	 <div class="row mt-2">
-	 	<div class="col">
-			<div class="card">
+	 <div class="card-deck row">
+		<?php foreach($cartas as $carta){?>
+		<div class="col-xs-12 col-sm-6 col-md-3" style="color: <?=  $carta['color']?> !important">
+			<div class="card text-center">
 				<div class="card-body">
-					<h4>Ventas por usuarios</h4>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Nombre usuario</th>
-								<th>Número ventas</th>
-								<th>Total ventas</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach($ventasUsuarios as $usuario) {?>
-								<tr>
-									<td><?= $usuario->usuario?></td>
-									<td><?= $usuario->numeroVentas?></td>
-									<td>$<?= $usuario->total?></td>
-								</tr>
-							<?php }?>
-						</tbody>
-					</table>
+					<h4 class="card-title" >
+						<i class="fa <?= $carta['icono']?>"></i>
+						<?= $carta['titulo']?>
+					</h4>
+					<h2><?= $carta['total']?></h2>
+
 				</div>
-			</div>	 		
-	 	</div>
+
+			</div>
+		</div>
+		<?php }?>
+	</div>
+	 <div class="row mt-2">
+	 	
 	 	<div class="col">
 			<div class="card">
 				<div class="card-body">
@@ -181,7 +172,31 @@ $productosMasVendidos = obtenerProductosMasVendidos();
 			</div>
 	 	</div>
 	 </div>
-
+	 <div class="col">
+			<div class="card">
+				<div class="card-body">
+					<h4>Ventas por usuarios</h4>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Nombre usuario</th>
+								<th>Número ventas</th>
+								<th>Total ventas</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($ventasUsuarios as $usuario) {?>
+								<tr>
+									<td><?= $usuario->usuario?></td>
+									<td><?= $usuario->numeroVentas?></td>
+									<td>$<?= $usuario->total?></td>
+								</tr>
+							<?php }?>
+						</tbody>
+					</table>
+				</div>
+			</div>	 		
+	 	</div>
 	 <h4>10 Productos más vendidos</h4>
 	 <table class="table">
 	 	<thead>
@@ -202,6 +217,42 @@ $productosMasVendidos = obtenerProductosMasVendidos();
 	 	</tbody>
 	 </table>
 </div>	
-<?php 
-include_once "include/footer.php";
-?>
+<footer class="footer text-white pt-5 pb-4">
+    <div class="footer-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <!-- Logo y descripción -->
+            <div class="col-md-4 mb-4">
+                <h5 class="text-uppercase fw-bold">Inventario ARIEL</h5>
+                <p>Simplifica la gestión de tu inventario con nuestra plataforma innovadora y eficiente.</p>
+                <img src="img/logotipo.png" alt="InventarioPro Logo" class="img-fluid">
+            </div>
+            <!-- Enlaces útiles -->
+            <div class="col-md-4 mb-4">
+                <h5 class="text-uppercase fw-bold">REFERENCIAS</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Inicio</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Productos</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Servicios</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Contacto</a></li>
+                </ul>
+            </div>
+            <!-- Redes Sociales -->
+            <div class="col-md-4 mb-4">
+                <h5 class="text-uppercase fw-bold">SOCIAL</h5>
+                <p>Conéctate con nosotros en redes sociales para recibir las últimas actualizaciones.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="bg-secondary">
+        <div class="text-center">
+            <p class="mb-0">&copy; 2024 InventarioPro. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+</html>

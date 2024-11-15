@@ -424,10 +424,10 @@ function editar($sentencia, $parametros ){
 }
 
 function conectarBaseDatos() {
-	$host = "https://practica.dpweb2024.com/auth/login.php";
-	$db   = "dpwebcom_inventario_practica";
-	$user = "dpwebcom_yeferson";
-	$pass = "=V1Sss?}Yx#+";
+	$host = "localhost";
+	$db   = "ventas_php";
+	$user = "root";
+	$pass = "";
 	$charset = 'utf8mb4';
 
 	$options = [

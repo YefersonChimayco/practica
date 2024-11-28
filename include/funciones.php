@@ -459,7 +459,7 @@ function editar($sentencia, $parametros ){
 
 function conectarBaseDatos() {
 	$host = "localhost";
-	$db   = "vdpwebcom_inventario_practica";
+	$db   = "dpwebcom_inventario_practica";
 	$user = "dpwebcom_yeferson";
 	$pass = "=V1Sss?}Yx#+";
 	$charset = 'utf8mb4';

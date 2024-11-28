@@ -1,5 +1,5 @@
 <?php
-include_once "../include/encabezado.php";
+include_once "../include/funciones.php";
 
 if(isset($_POST['ingresar'])){
     if(empty($_POST['usuario']) || empty($_POST['password'])){
@@ -11,7 +11,7 @@ if(isset($_POST['ingresar'])){
         return;
     }
 
-    include_once "../include/funciones.php";
+
 
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
@@ -29,8 +29,24 @@ if(isset($_POST['ingresar'])){
         return;
     }
 
+    // Almacenar datos en la sesión
     $_SESSION['usuario'] = $datosSesion->usuario;
     $_SESSION['idUsuario'] = $datosSesion->id;
-    header("location: ../index.php");
+    $_SESSION['rol'] = $datosSesion->rol;
+
+    // Redirigir según el rol
+    if($datosSesion->rol == 1){
+        header("location: ../empleado/index.php");
+    } elseif($datosSesion->rol == 2){
+        header("location: ../index.php");
+    } else {
+        // Si el rol no es reconocido
+        echo'
+        <div class="alert alert-warning mt-3" role="alert">
+            Rol no reconocido.
+            <a href="login.php">Regresar</a>
+        </div>';
+        return;
+    }
 }
 ?>

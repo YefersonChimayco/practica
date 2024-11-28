@@ -64,8 +64,8 @@
   }
   /* estilos de la sesion*/
   .alert{
-    background-color: #343a40;
-    color: white;
+    background-color: orangered;
+    color: black;
     padding: 20px;
     border-radius: 5px;
     font-family: Arial, sans-serif;

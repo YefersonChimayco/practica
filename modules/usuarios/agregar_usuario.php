@@ -26,6 +26,10 @@ if(empty($_SESSION['usuario'])) header("location: login.php");
             <label for="direccion" class="form-label">Dirección</label>
             <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Ecribe la direccion">
         </div>
+        <div class="mb-3">
+            <label for="rol" class="form-label">Tu ROL</label>
+            <input type="text" name="rol" class="form-control" id="rol" placeholder="1= empleado 2 = admin">
+        </div>
 
         <div class="text-center mt-3">
             <input type="submit" name="registrar" value="Registrar" class="btn btn-primary btn-lg">
@@ -43,32 +47,36 @@ if(empty($_SESSION['usuario'])) header("location: login.php");
     </form>
 </div>
 <?php
-if(isset($_POST['registrar'])){
+if (isset($_POST['registrar'])) {
     $usuario = $_POST['usuario'];
     $nombre = $_POST['nombre'];
     $telefono = $_POST['telefono'];
     $direccion = $_POST['direccion'];
-    if(empty($usuario)
-    ||empty($nombre) 
-    || empty($telefono) 
-    || empty($direccion)){
-        echo'
+    $rol = isset($_POST['rol']) ? (int)$_POST['rol'] : 1; // Rol predeterminado como empleado (1)
+
+    if (empty($usuario) || empty($nombre) || empty($telefono) || empty($direccion) || empty($rol)) {
+        echo '
         <div class="alert alert-danger mt-3" role="alert">
             Debes completar todos los datos.
         </div>';
         return;
-    } 
-    
+    }
+
     include_once "../../include/funciones.php";
-    $resultado = registrarUsuario($usuario, $nombre, $telefono, $direccion);
-    if($resultado){
-        echo'
+    $resultado = registrarUsuario($usuario, $nombre, $telefono, $direccion, $rol); // Ahora incluye el rol
+    if ($resultado) {
+        echo '
         <div class="alert alert-success mt-3" role="alert">
             Usuario registrado con éxito.
         </div>';
+    } else {
+        echo '
+        <div class="alert alert-danger mt-3" role="alert">
+            Ocurrió un error al registrar el usuario. Verifica los datos e inténtalo nuevamente.
+        </div>';
     }
-    
 }
+
  
 include_once "../../include/footer.php";
 

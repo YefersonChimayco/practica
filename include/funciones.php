@@ -3,15 +3,25 @@
 define("PASSWORD_PREDETERMINADA", "catalino");
 define("HOY", date("Y-m-d"));
 
-function iniciarSesion($usuario, $password){
-    $sentencia = "SELECT id, usuario FROM usuarios WHERE usuario  = ?";
+function iniciarSesion($usuario, $password) {
+    // Incluimos el campo "rol" en el SELECT
+    $sentencia = "SELECT id, usuario, rol FROM usuarios WHERE usuario = ?";
     $resultado = select($sentencia, [$usuario]);
-    if($resultado){
+
+    if ($resultado) {
         $usuario = $resultado[0];
+        
+        // Verificar la contraseña
         $verificaPass = verificarPassword($usuario->id, $password);
-        if($verificaPass) return $usuario;
+        
+        // Retornar el objeto usuario si la contraseña es correcta
+        if ($verificaPass) return $usuario;
     }
+
+    // Retornar false si no se encuentra el usuario o contraseña no coincide
+    return false;
 }
+
 
 function verificarPassword($idUsuario, $password){
     $sentencia = "SELECT password FROM usuarios WHERE id = ?";
@@ -47,12 +57,13 @@ function obtenerUsuarios(){
     return select($sentencia);
 }
 
-function registrarUsuario($usuario, $nombre, $telefono, $direccion){
-    $password = password_hash(PASSWORD_PREDETERMINADA, PASSWORD_DEFAULT);
-    $sentencia = "INSERT INTO usuarios (usuario, nombre, telefono, direccion, password) VALUES (?,?,?,?,?)";
-    $parametros = [$usuario, $nombre, $telefono, $direccion, $password];
+function registrarUsuario($usuario, $nombre, $telefono, $direccion, $rol) {
+    $password = password_hash(PASSWORD_PREDETERMINADA, PASSWORD_DEFAULT); // Contraseña predeterminada encriptada
+    $sentencia = "INSERT INTO usuarios (usuario, nombre, telefono, direccion, password, rol) VALUES (?,?,?,?,?,?)";
+    $parametros = [$usuario, $nombre, $telefono, $direccion, $password, $rol];
     return insertar($sentencia, $parametros);
 }
+
 
 
 function eliminarCliente($id){
@@ -392,11 +403,34 @@ function obtenerProductos($busqueda = null){
     return select($sentencia, $parametros);
 }
 
-function registrarProducto($codigo, $nombre, $compra, $venta, $existencia){
+function registrarProducto($codigo, $nombre, $compra, $venta, $existencia) {
+    // Verificar si el código ya existe en la base de datos
+    $sentencia = "SELECT COUNT(*) AS count FROM productos WHERE codigo = ?";
+    $resultado = select($sentencia, [$codigo]);
+
+    // Si el código ya existe, mostrar un warning
+    if ($resultado[0]->count > 0) {
+        trigger_error("Error: El código del producto '$codigo' ya existe.", E_USER_WARNING);
+        return false; // No insertamos el producto, pero continuamos el flujo
+    }
+
+    // Verificar si el nombre del producto ya existe en la base de datos
+    $sentencia = "SELECT COUNT(*) AS count FROM productos WHERE nombre = ?";
+    $resultado = select($sentencia, [$nombre]);
+
+    // Si el nombre ya existe, mostrar un warning
+    if ($resultado[0]->count > 0) {
+        trigger_error("Error: El nombre del producto '$nombre' ya existe.", E_USER_WARNING);
+        return false; // No insertamos el producto, pero continuamos el flujo
+    }
+
+    // Si el código y el nombre no existen, proceder con la inserción
     $sentencia = "INSERT INTO productos(codigo, nombre, compra, venta, existencia) VALUES (?,?,?,?,?)";
     $parametros = [$codigo, $nombre, $compra, $venta, $existencia];
     return insertar($sentencia, $parametros);
 }
+
+
 
 function select($sentencia, $parametros = []){
     $bd = conectarBaseDatos();
@@ -424,10 +458,10 @@ function editar($sentencia, $parametros ){
 }
 
 function conectarBaseDatos() {
-	$host = "practica.dpweb2024.com";
-	$db   = "dpwebcom_inventario_practica";
-	$user = "dpwebcom_yeferson";
-	$pass = "=V1Sss?}Yx#+";
+	$host = "localhost";
+	$db   = "ventas_php";
+	$user = "root";
+	$pass = "";
 	$charset = 'utf8mb4';
 
 	$options = [

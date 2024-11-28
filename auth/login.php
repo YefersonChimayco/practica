@@ -25,6 +25,9 @@ include_once "../include/encabezado.php";
                 <div class="pb-2">
                     <button type="submit" name="ingresar" class="btn btn-primary w-100 font-weight-bold mt-2">Ingresar</button>
                 </div>
+                <div class="pb-2">
+                    <a href="https://web.whatsapp.com/" name="" class="">Si olvidó la contraseña comuniquese con el Administrador (932534222)</a>
+                </div>
             </form>
         </div>
     </div>

@@ -15,7 +15,7 @@ if(empty($_SESSION['usuario'])) header("location: login.php");
         </div>
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre o descripción</label>
-            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ej. Papas">
+            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ej. LLave">
         </div>
         <div class="row">
             <div class="col">

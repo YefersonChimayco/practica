@@ -1,19 +1,19 @@
 <?php
-include_once "include/funciones.php";
+include_once "../include/funciones.php";
 session_start();
 if(empty($_SESSION['usuario'])) header("location:auth/login.php");
 $cartas = [
-    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas</a>","Total ventas", "icono" => "fa fa-money-bill", "total" => "$".obtenerTotalVentas(), "color" => "#A71D45"],
-    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas Hoy</a>","Ventas hoy", "icono" => "fa fa-calendar-day", "total" => "$".obtenerTotalVentasHoy(), "color" => "#2A8D22"],
-    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas en la Semana</a>","Ventas semana", "icono" => "fa fa-calendar-week", "total" => "$".obtenerTotalVentasSemana(), "color" => "#223D8D"],
-    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas de este Mes</a>","Ventas mes", "icono" => "fa fa-calendar-alt", "total" => "$".obtenerTotalVentasMes(), "color" => "#D55929"],
+    ["titulo" => "<a href='../modules/ventas/reporte_ventase.php'>Total ventas</a>","Total ventas", "icono" => "fa fa-money-bill", "total" => "$".obtenerTotalVentas(), "color" => "#A71D45"],
+    ["titulo" => "<a href='../modules/ventas/reporte_ventase.php'>Total ventas Hoy</a>","Ventas hoy", "icono" => "fa fa-calendar-day", "total" => "$".obtenerTotalVentasHoy(), "color" => "#2A8D22"],
+    ["titulo" => "<a href='../modules/ventas/reporte_ventase.php'>Total ventas en la Semana</a>","Ventas semana", "icono" => "fa fa-calendar-week", "total" => "$".obtenerTotalVentasSemana(), "color" => "#223D8D"],
+    ["titulo" => "<a href='../modules/ventas/reporte_ventase.php'>Total ventas de este Mes</a>","Ventas mes", "icono" => "fa fa-calendar-alt", "total" => "$".obtenerTotalVentasMes(), "color" => "#D55929"],
 ];
 
 $totales = [
-	["nombre" => "<a href='modules/productos/productos.php'>Total productos</a>","Total productos", "total" => obtenerNumeroProductos(), "imagen" => "img/producosss.jpg"],
-	["nombre" => "<a href='modules/ventas/reporte_ventas.php'>Ventas registradas</a>","Ventas registradas", "total" => obtenerNumeroVentas(), "imagen" => "img/ventasss.png"],
-	["nombre" => "<a href='modules/usuarios/usuarios.php'>Usuarios Registrados</a>","Usuarios registrados", "total" => obtenerNumeroUsuarios(), "imagen" => "img/usuariosss.png"],
-	["nombre" => "<a href='modules/clientes/clientes.php'>Clientes registrados</a>","Clientes registrados", "total" => obtenerNumeroClientes(), "imagen" => "img/clientesss.jpg"],
+	["nombre" => "<a href='../modules/productos/productose.php'>Total productos</a>","Total productos", "total" => obtenerNumeroProductos(), "imagen" => "../img/producosss.jpg"],
+	["nombre" => "<a href='../modules/ventas/reporte_ventase.php'>Ventas registradas</a>","Ventas registradas", "total" => obtenerNumeroVentas(), "imagen" => "img/ventasss.png"],
+	["nombre" => "<a href='../modules/usuarios/usuariose.php'>Usuarios Registrados</a>","Usuarios registrados", "total" => obtenerNumeroUsuarios(), "imagen" => "img/usuariosss.png"],
+	["nombre" => "<a href='../modules/clientes/clientese.php'>Clientes registrados</a>","Clientes registrados", "total" => obtenerNumeroClientes(), "imagen" => "img/clientesss.jpg"],
 ];
 
 $ventasUsuarios = obtenerVentasPorUsuario();
@@ -32,7 +32,7 @@ $productosMasVendidos = obtenerProductosMasVendidos();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="logo_principal.png">
     <title>Ventas-PHP</title>
 </head>
@@ -42,10 +42,10 @@ $productosMasVendidos = obtenerProductosMasVendidos();
   <div class="container-fluid">
     <!-- Botones de perfil y salir alineados a la derecha -->
     <div class="d-flex ms-auto">
-      <a href="modules/usuarios/perfil.php" class="btn btn-primary me-2">
+      <a href="../modules/usuarios/perfil.php" class="btn btn-primary me-2">
         <i class="fa fa-user-circle"></i> Perfil de vendedor
       </a>
-      <a href="./auth/cerrar_sesion.php" class="btn btn-danger">
+      <a href="../auth/cerrar_sesion.php" class="btn btn-danger">
         <i class="fa fa-sign-out-alt"></i> Cerrar Sesión
       </a>
     </div>
@@ -55,7 +55,7 @@ $productosMasVendidos = obtenerProductosMasVendidos();
   <div class="container-fluid">
     <!-- Logotipo (opcional) y botón de menú en dispositivos móviles -->
     <a class="navbar-brand" href="#">
-      <img src="./img/logotipo.png" alt="Logotipo" width="150" height="75" class="d-inline-block align-text-top">
+      <img src="../img/logotipo.png" alt="Logotipo" width="150" height="75" class="d-inline-block align-text-top">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -71,27 +71,27 @@ $productosMasVendidos = obtenerProductosMasVendidos();
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./modules/productos/productos.php">
+          <a class="nav-link active" href="../modules/productos/productose.php">
             <i class="fa fa-box-open"></i> Productos
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./modules/usuarios/usuarios.php">
+          <a class="nav-link active" href="../modules/usuarios/usuariose.php">
             <i class="fa fa-user-tie"></i> Usuarios
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./modules/clientes/clientes.php">
+          <a class="nav-link active" href="../modules/clientes/clientes.php">
             <i class="fa fa-address-book"></i> Clientes
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="modules/ventas/vender.php">
+          <a class="nav-link active" href="../modules/ventas/vender.php">
             <i class="fa fa-hand-holding-usd"></i> Vender
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="modules/ventas/reporte_ventas.php">
+          <a class="nav-link active" href="../modules/ventas/reporte_ventase.php">
             <i class="fa fa-chart-line"></i> Reporte ventas
           </a>
         </li>
@@ -105,7 +105,7 @@ $productosMasVendidos = obtenerProductosMasVendidos();
 <div class="container">
 	<div  class="alert " role="alert">
 		<h1 class="moving-text ">
-			Hola, Administrador <?= $_SESSION['usuario']?>
+			Hola, vendedor  <?= $_SESSION['usuario']?>
 			<i class="fa fa-running running-icon"></i> 
 		</h1>
 	</div>

@@ -306,42 +306,59 @@ function calcularTotalLista($lista){
 }
 
 function agregarProductoALista($producto, $listaProductos){
+    // Si la existencia es menor que 1, no agregar el producto a la lista
     if($producto->existencia < 1) return $listaProductos;
+    
+    // Asignar la cantidad inicial a 1
     $producto->cantidad = 1;
     
+    // Verificar si el producto ya está en la lista por su ID o nombre
     $existe = verificarSiEstaEnLista($producto->id, $listaProductos);
 
     if(!$existe){
+        // Si el producto no está en la lista, agregarlo
         array_push($listaProductos, $producto);
-    } else{
+    } else {
+        // Si el producto ya está en la lista, verificar la existencia de la cantidad
         $existenciaAlcanzada = verificarExistencia($producto->id, $listaProductos, $producto->existencia);
         
-        if($existenciaAlcanzada)return $listaProductos;
+        if($existenciaAlcanzada){
+            // Si ya se alcanzó la existencia máxima, no agregar más
+            return $listaProductos;
+        }
 
+        // Si no se ha alcanzado la existencia máxima, agregar cantidad
         $listaProductos = agregarCantidad($producto->id, $listaProductos);
-        }
-        
-    return $listaProductos;
+    }
     
+    return $listaProductos;
 }
 
-function verificarExistencia($idProducto, $listaProductos, $existencia){
+
+function verificarExistencia($productoIdentificador, $listaProductos, $existencia){
     foreach($listaProductos as $producto){
-        if($producto->id == $idProducto){
-           if($existencia <= $producto->cantidad) return true; 
+        // Compara tanto por ID como por nombre
+        if($producto->id == $productoIdentificador || $producto->nombre == $productoIdentificador){
+            // Si la cantidad ya alcanza la existencia máxima, retornamos true
+            if($existencia <= $producto->cantidad) {
+                return true;
+            }
         }
     }
-    return false;
+    return false; // Si no se encontró el producto o la cantidad no alcanza la existencia
 }
 
-function verificarSiEstaEnLista($idProducto, $listaProductos){
+
+function verificarSiEstaEnLista($productoIdentificador, $listaProductos){
     foreach($listaProductos as $producto){
-        if($producto->id == $idProducto){
-            return true;
+        // Compara tanto por ID como por nombre
+        if($producto->id == $productoIdentificador || $producto->nombre == $productoIdentificador){
+            return true; // El producto ya está en la lista
         }
     }
-    return false;
+    return false; // El producto no está en la lista
 }
+
 
 function agregarCantidad($idProducto, $listaProductos){
     foreach($listaProductos as $producto){
@@ -388,10 +405,27 @@ function editarProducto($codigo, $nombre, $compra, $venta, $existencia, $id){
     return editar($sentencia, $parametros);
 }
 
-function obtenerProductoPorId($id){
-    $sentencia = "SELECT * FROM productos WHERE id = ?";
-    return select($sentencia, [$id])[0];
+// Función para obtener un producto por su ID (código de barras)
+function obtenerProductoPorId($codigo){
+    $sentencia = "SELECT * FROM productos WHERE codigo = ?";
+    $resultado = select($sentencia, [$codigo]);
+
+    // Comprobar si hay resultados antes de acceder a la primera posición del array
+    if (count($resultado) > 0) {
+        return $resultado[0]; // Retorna el primer producto
+    } else {
+        return null; // Si no hay resultados, retorna null o maneja el caso como desees
+    }
 }
+
+
+// Función para obtener un producto por su nombre
+function obtenerProductoPorNombre($nombre){
+    $sentencia = "SELECT * FROM productos WHERE nombre = ?";
+    return select($sentencia, [$nombre])[0]; // Suponiendo que "select" es tu función de acceso a la base de datos
+}
+
+
 
 function obtenerProductos($busqueda = null){
     $parametros = [];
@@ -459,9 +493,9 @@ function editar($sentencia, $parametros ){
 
 function conectarBaseDatos() {
 	$host = "localhost";
-	$db   = "dpwebcom_inventario_practica";
-	$user = "dpwebcom_yeferson";
-	$pass = "=V1Sss?}Yx#+";
+	$db   = "ventas_php";
+	$user = "root";
+	$pass = "";
 	$charset = 'utf8mb4';
 
 	$options = [

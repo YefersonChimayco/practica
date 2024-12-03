@@ -13,8 +13,8 @@ $productos = obtenerProductos($nombreProducto);
 $cartas = [
     ["titulo" => "No. Productos", "icono" => "fa fa-box", "total" => count($productos), "color" => "#3578FE"],
     ["titulo" => "Total productos", "icono" => "fa fa-shopping-cart", "total" => obtenerNumeroProductos(), "color" => "#4F7DAF"],
-    ["titulo" => "Total inventario", "icono" => "fa fa-money-bill", "total" => "$". obtenerTotalInventario(), "color" => "#1FB824"],
-    ["titulo" => "Ganancia", "icono" => "fa fa-wallet", "total" => "$". calcularGananciaProductos(), "color" => "#D55929"],
+    ["titulo" => "Total inventario", "icono" => "fa fa-money-bill", "total" => "S/". obtenerTotalInventario(), "color" => "#1FB824"],
+    ["titulo" => "Ganancia", "icono" => "fa fa-wallet", "total" => "S/". calcularGananciaProductos(), "color" => "#D55929"],
 ];
 ?>
 
@@ -56,9 +56,9 @@ $cartas = [
                 <tr>
                     <td><?= $producto->codigo; ?></td>
                     <td><?= $producto->nombre; ?></td>
-                    <td><?= '$'.$producto->compra; ?></td>
-                    <td><?= '$'.$producto->venta; ?></td>
-                    <td><?= '$'. floatval($producto->venta - $producto->compra); ?></td>
+                    <td><?= 'S/'.$producto->compra; ?></td>
+                    <td><?= 'S/'.$producto->venta; ?></td>
+                    <td><?= 'S/'. floatval($producto->venta - $producto->compra); ?></td>
                     <td><?= $producto->existencia; ?></td>
                     <td>
                         <a class="btn btn-info" href="editar_producto.php?id=<?= $producto->id; ?>">

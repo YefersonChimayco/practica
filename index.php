@@ -3,10 +3,10 @@ include_once "include/funciones.php";
 session_start();
 if(empty($_SESSION['usuario'])) header("location:auth/login.php");
 $cartas = [
-    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas</a>","Total ventas", "icono" => "fa fa-money-bill", "total" => "$".obtenerTotalVentas(), "color" => "#A71D45"],
-    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas Hoy</a>","Ventas hoy", "icono" => "fa fa-calendar-day", "total" => "$".obtenerTotalVentasHoy(), "color" => "#2A8D22"],
-    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas en la Semana</a>","Ventas semana", "icono" => "fa fa-calendar-week", "total" => "$".obtenerTotalVentasSemana(), "color" => "#223D8D"],
-    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas de este Mes</a>","Ventas mes", "icono" => "fa fa-calendar-alt", "total" => "$".obtenerTotalVentasMes(), "color" => "#D55929"],
+    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas</a>","Total ventas", "icono" => "fa fa-money-bill", "total" => "S/".obtenerTotalVentas(), "color" => "#A71D45"],
+    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas Hoy</a>","Ventas hoy", "icono" => "fa fa-calendar-day", "total" => "S/".obtenerTotalVentasHoy(), "color" => "#2A8D22"],
+    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas en la Semana</a>","Ventas semana", "icono" => "fa fa-calendar-week", "total" => "S/".obtenerTotalVentasSemana(), "color" => "#223D8D"],
+    ["titulo" => "<a href='modules/ventas/reporte_ventas.php'>Total ventas de este Mes</a>","Ventas mes", "icono" => "fa fa-calendar-alt", "total" => "S/".obtenerTotalVentasMes(), "color" => "#D55929"],
 ];
 
 $totales = [

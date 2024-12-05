@@ -493,9 +493,9 @@ function editar($sentencia, $parametros ){
 
 function conectarBaseDatos() {
 	$host = "localhost";
-	$db   = "ventas_php";
-	$user = "root";
-	$pass = "";
+	$db   = "dpwebcom_inventario_practica";
+	$user = "dpwebcom_yeferson";
+	$pass = "=V1Sss?}Yx#+";
 	$charset = 'utf8mb4';
 
 	$options = [
